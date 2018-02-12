@@ -1,0 +1,3 @@
+<div id="langPanel" class="centerContent">
+    <span *ngFor="let lang of locale.availableLang" [ngClass]="{'plain-regular': true, currentLang: (lang === locale.currentLang)}" (click)="changeLang(lang)">{{lang}}</span>
+</div>

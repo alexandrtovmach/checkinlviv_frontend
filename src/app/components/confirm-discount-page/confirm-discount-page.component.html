@@ -1,0 +1,16 @@
+<section *ngIf="isLoaded" class="centerContent">
+    <div *ngIf="!isConfirmedDiscount" class="centerContent flexColumn accent-regular">
+        {{locale.langPack['CONFIRMDISCOUNT-DESC-1']}} {{currentDiscount.company.name[locale.currentLang]}} {{locale.langPack['CONFIRMDISCOUNT-DESC-2']}} {{currentDiscount.email}}.
+        <br>
+        <br>
+        <i class="plain-bold">
+            {{locale.langPack['CONFIRMDISCOUNT-ATTENTION']}}
+        </i>
+        <br>
+        <br>
+        <div class="button success-button" (click)="confirm()">{{locale.langPack['USEDISCOUNT']}}</div>
+    </div>
+    <div *ngIf="isConfirmedDiscount">
+        {{locale.langPack['Discount confirmed']}}
+    </div>
+</section>

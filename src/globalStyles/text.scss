@@ -1,0 +1,118 @@
+@include font-face(Comfortaa-Bold, '../globalStyles/resources/fonts/Comfortaa/Comfortaa-Bold', null, null, ttf);
+@include font-face(Comfortaa-Light, '../globalStyles/resources/fonts/Comfortaa/Comfortaa-Light', null, null, ttf);
+@include font-face(Comfortaa-Regular, '../globalStyles/resources/fonts/Comfortaa/Comfortaa-Regular', null, null, ttf);
+
+@include font-face(Vollkorn-Bold, '../globalStyles/resources/fonts/Vollkorn/Vollkorn-Bold', null, null, ttf);
+@include font-face(Vollkorn-Regular, '../globalStyles/resources/fonts/Vollkorn/Vollkorn-Regular', null, null, ttf);
+
+.h1-alt, .h2-alt, .plain-bold, .plain-light, .plain-regular, .accent-bold, .accent-light, .accent-regular {
+    line-height: 1.2;
+} 
+
+.h1 {
+    font-family: 'Vollkorn-Regular';
+    font-size: 40px;
+}
+.h2 {
+    font-family: 'Vollkorn-Regular';
+    font-size: 30px;
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.h1-alt {
+    font-family: 'Comfortaa-Regular';
+    font-size: 40px;
+}
+.h2-alt {
+    font-family: 'Comfortaa-Regular';
+    font-size: 30px;
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.plain-bold {
+    font-family: 'Comfortaa-Bold';
+    font-size: 18px;
+    @include medium {
+        font-size: 2vw;
+    }
+    @include small {
+        font-size: 4vw;
+    }
+}
+.plain-regular {
+    font-family: 'Comfortaa-Regular';
+    font-size: 18px;
+    @include medium {
+        font-size: 2vw;
+    }
+    @include small {
+        font-size: 4vw;
+    }
+}
+.plain-light {
+    font-family: 'Comfortaa-Light';
+    font-size: 18px;
+    @include medium {
+        font-size: 2vw;
+    }
+    @include small {
+        font-size: 4vw;
+    }
+}
+.accent-bold {
+    font-family: 'Comfortaa-Bold';
+    font-size: 25px;
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.accent-regular {
+    font-family: 'Comfortaa-Regular';
+    font-size: 25px;
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.accent-light {
+    font-family: 'Comfortaa-Light';
+    font-size: 25px;
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.alt-accent-bold {
+    font-family: 'Vollkorn-Bold';
+    font-size: 25px;
+    @include hd {
+        font-size: 2vw;
+    }
+    @include large {
+        font-size: 2vw;
+    }
+    @include medium {
+        font-size: 3vw;
+    }
+    @include small {
+        font-size: 6vw;
+    }
+}
+.textAlignCenter {
+    text-align: center;
+}

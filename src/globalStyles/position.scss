@@ -1,0 +1,19 @@
+.centerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.horizontalAlign {
+    display: flex;
+    justify-content: center;
+}
+.verticalAlign {
+    display: flex;
+    align-items: center;
+}
+.flexColumn {
+    flex-direction: column;
+}
+.flexWrap {
+    flex-wrap: wrap;
+}

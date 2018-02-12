@@ -1,0 +1,48 @@
+<section>
+    <div class="banner1">
+        <div id="bannerWrap">
+            <a *ngFor="let banner of banners" [href]="banner.link" [title]="banner.name">
+                <img [src]="banner.img" [alt]="banner.name">
+            </a>
+        </div>
+    </div>
+    <div class="proposePanel">
+        <div *ngFor="let circle of points" class="descript textAlignCenter">
+            <h3 class="alt-accent-bold">{{locale.langPack[circle.name]}}</h3>
+            <p class="centerContent">{{locale.langPack[circle.descript]}}</p>
+        </div>
+        <div class="progressLine"></div>
+    </div>
+    <div class="tread">
+        <h2 class="h2-alt textAlignCenter">{{locale.langPack['OURPARTNER']}}</h2>
+        <div class="logoTread verticalAlign">
+            <a *ngFor="let company of allCompanies" [routerLink]="'/company/' + company._id" target="_blank" title={{company.name.en}} style.backgroundImage="{{'url(' + company.logo + ')'}}"></a>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="navigationPanel hideResultOnMobile">
+        <div class="searchPanel verticalAlign">
+            <label for="search" class="alt-accent-bold">{{locale.langPack['SEARCH']}}:</label>
+            <input #searchInput id="search" class="oneLineInput" type="text" (keyup)="search(searchInput, resultPanel, categoryPanel)">
+            <label>
+                {{locale.langPack['ONLYWITHDISCOUNT']}}:
+                <input type="checkbox" (click)="search(searchInput, resultPanel, categoryPanel, $event.target)" class="checkbox">
+            </label>
+        </div>
+        <div #categoryPanel class="categoriesPanel desktop">
+            <h3 class="alt-accent-bold">{{locale.langPack['CATEGORIES']}}:</h3>
+            <div class="category verticalAlign plain-bold" *ngFor="let category of categories" [style.backgroundColor]="category.bg" (click)="showCompaniesByCategory(category.name, category.bg, $event.target, resultPanel)">{{locale.langPack[category.name]}}</div>
+        </div>
+    </div>
+    <div #resultPanel class="resultPanel">
+        <a *ngFor="let company of resultCompanies" [routerLink]="'/company/' + company._id" target="_blank" title={{company.name.en}} class="{{company.isMarkedCheckInLviv? 'discountBg': ''}} resultCompany accent-regular">
+            <div style.backgroundImage="{{'url(' + company.logo + ')'}}"></div>
+            <span class="plain-regular">{{company.name[locale.currentLang]}}</span>
+        </a>
+        <a *ngIf="activeCategory" [routerLink]="'/category/' + activeCategory" class="resultCompany otherResults centerContent accent-regular">
+            <span class="plain-regular">{{locale.langPack['Other results']}}...</span>
+        </a>
+    </div>
+</section>
+

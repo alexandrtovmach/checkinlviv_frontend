@@ -1,0 +1,89 @@
+<section *ngIf="isLoaded">
+    <div class="{{currentCompany.isMarkedCheckInLviv? 'discountBg': ''}} resultCompany accent-regular">
+        <div class="shortInfo">
+            <a [href]="currentCompany.link" target="_blank" class="logo" style.backgroundImage="{{'url(' + currentCompany.logo + ')'}}" title="{{locale.langPack['TOWEBDESC']}}">
+                <div *ngIf="currentCompany.link" class="link plain-light centerContent">{{locale.langPack['TOWEB']}}</div>
+            </a>
+            <div class="phones">
+                <div *ngIf="currentCompany.phones.main[0]">
+                    Main:
+                    <div class="verticalAlign flexColumn" class="oneItem">
+                        <div *ngFor="let phone of currentCompany.phones.main">{{phone}}</div>
+                    </div>
+                </div>
+                <div *ngIf="currentCompany.phones.reception[0]">
+                    Reception:
+                    <div class="verticalAlign flexColumn" class="oneItem">
+                        <div *ngFor="let phone of currentCompany.phones.reception">{{phone}}</div>
+                    </div>
+                </div>
+                <div *ngIf="currentCompany.phones.book[0]">
+                    Booking:
+                    <div class="verticalAlign flexColumn" class="oneItem">
+                        <div *ngFor="let phone of currentCompany.phones.book">{{phone}}</div>
+                    </div>
+                </div>
+                <div *ngIf="currentCompany.phones.restaurant[0]">
+                    Restaurant:
+                    <div class="verticalAlign flexColumn" class="oneItem">
+                        <div *ngFor="let phone of currentCompany.phones.restaurant">{{phone}}</div>
+                    </div>
+                </div>
+                <div *ngIf="currentCompany.phones.fax[0]">
+                    Fax:
+                    <div class="verticalAlign flexColumn" class="oneItem">
+                        <div *ngFor="let phone of currentCompany.phones.fax">{{phone}}</div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="currentCompany.address" class="address">
+                Location:
+                <div class="oneItem">{{currentCompany.address[locale.currentLang]}}</div>
+            </div>
+            <div *ngIf="currentCompany.email" class="email">
+                Email:
+                <div class="oneItem">{{currentCompany.email}}</div>
+            </div>
+        </div>
+        
+        <div class="info">
+            <p class="description plain-light">{{currentCompany.description[locale.currentLang]}}</p>
+            <!-- <modal-gallery [enableCloseOutside]="true" [buttonsConfig]="{extUrl: true, close: true}" [modalImages]="imagesArray"></modal-gallery> -->
+        </div>
+    </div>
+    <form #formEmail="ngForm" *ngIf="!discountUrl && !subscribed" (submit)="submitEmail(formEmail)" class="formDiscount centerContent">
+        <div>
+            <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" [(ngModel)]="email" placeholder="your@email.com" class="oneLineInput" required/>
+            <mat-error *ngIf="formEmail.controls.email && formEmail.controls.email.errors && formEmail.controls.email.errors.pattern && formEmail.touched">
+                {{locale.langPack['ERR-EMAIL']}}
+            </mat-error>
+            <mat-error *ngIf="formEmail.controls.email && formEmail.controls.email.errors && formEmail.controls.email.errors.required && formEmail.touched">
+                {{locale.langPack['ERR-REQUIRED']}}
+            </mat-error>
+        </div>
+        <button class="button success-button">{{currentCompany.isMarkedCheckInLviv? locale.langPack['GETDISCOUNT']: locale.langPack['SUBSCRIBE']}}</button>
+        <h3 class="textAlignCenter plain-bold">
+            {{currentCompany.isMarkedCheckInLviv? locale.langPack['GETDISCOUNT-DESC']: locale.langPack['SUBSCRIBE-DESC']}}
+        </h3>
+    </form>
+    <div *ngIf="subscribed">{{locale.langPack['SUBSCRIBED-DESC']}}</div>
+</section>
+<section *ngIf="discountUrl" class="centerContent">
+    <div class="resultDiscount verticalAlign flexColumn">
+        <h2 class="h2-alt">{{locale.langPack['CONGRATULATIONS']}}</h2>
+        <div class="verticalAlign">
+            <qr-code #qr [value]="discountUrl" [size]="300" class="centerContent"></qr-code>
+            <div>
+                <p class="plain-regular">
+                    {{locale.langPack['DISCOUNTGETED-DESC']}}
+                    <span class='h2'>-10%</span>.
+                </p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a [href]="discountUrl" style="text-decoration: underline" target="_blank">{{locale.langPack['DISCOUNTGETED-DESC-ALTLINK']}}</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,45 @@
+//color schema
+
+
+$color-main: #f4e6ba;
+$color-alt: #18559F;
+$color-dark: #3f321a;
+
+//breakpoints
+$full-hd-screen: 1650px;
+$hd-screen: 1280px;
+$large-screen: 1024px;
+$medium-screen: 768px;
+$small-screen: 480px;
+
+
+@mixin over-hd {
+    @media (min-width: #{$full-hd-screen + 1}) {
+        @content;
+    }
+}
+@mixin full-hd {
+    @media (min-width: #{$hd-screen + 1}) and (max-width: #{$full-hd-screen}) {
+        @content;
+    }
+}
+@mixin hd {
+    @media (min-width: #{$large-screen + 1}) and (max-width: #{$hd-screen}) {
+        @content;
+    }
+}
+@mixin large {
+    @media (min-width: #{$medium-screen + 1}) and (max-width: #{$large-screen}) {
+        @content;
+    }
+}
+@mixin medium {
+    @media (min-width: #{$small-screen + 1}) and (max-width: #{$medium-screen}) {
+        @content;
+    }
+}
+@mixin small {
+    @media (max-width: #{$small-screen}) {
+        @content;
+    }
+}

@@ -1,0 +1,182 @@
+<section *ngIf="isLoaded">
+    <form #companyForm="ngForm" (submit)="submit(companyForm)" class="companyForm">
+        <mat-tab-group>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'companyNameEn')||checker(companyForm, 'companyNameRu')||checker(companyForm, 'companyNameUa')? 'error': ''">NAME</span>
+                </ng-template>
+                <label class="tabContent">English:
+                    <input name="companyNameEn" [(ngModel)]="company.name.en" placeholder="Tour de Lviv" [ngClass]="checker(companyForm, 'companyNameEn')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyNameEn', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Russian:
+                    <input name="companyNameRu" [(ngModel)]="company.name.ru" placeholder="Тур де Львов" [ngClass]="checker(companyForm, 'companyNameRu')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyNameRu', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Ukrainian:
+                    <input name="companyNameUa" [(ngModel)]="company.name.ua" placeholder="Тур де Львів" [ngClass]="checker(companyForm, 'companyNameUa')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyNameUa', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'companyDescriptionEn')||checker(companyForm, 'companyDescriptionRu')||checker(companyForm, 'companyDescriptionUa')? 'error': ''">DESCRIPTION</span>
+                </ng-template>
+                <label class="tabContent">English:
+                    <textarea name="companyDescriptionEn" [(ngModel)]="company.description.en" placeholder="Tour de Lviv it's best travel agency of Lviv..." [ngClass]="checker(companyForm, 'companyDescriptionEn')? 'error textarea': 'textarea'" required></textarea>
+                    <mat-error *ngIf="checker(companyForm, 'companyDescriptionEn', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Russian:
+                    <textarea name="companyDescriptionRu" [(ngModel)]="company.description.ru" placeholder="Тур де Львов - это лучшее туристическое агенство Львова..." [ngClass]="checker(companyForm, 'companyDescriptionRu')? 'error textarea': 'textarea'" required></textarea>
+                    <mat-error *ngIf="checker(companyForm, 'companyDescriptionRu', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Ukrainian:
+                    <textarea name="companyDescriptionUa" [(ngModel)]="company.description.ua" placeholder="Тур де Львів - це найкраща турфірма у Львові" [ngClass]="checker(companyForm, 'companyDescriptionUa')? 'error textarea': 'textarea'" required></textarea>
+                    <mat-error *ngIf="checker(companyForm, 'companyDescriptionUa', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'companyAddressEn')||checker(companyForm, 'companyAddressRu')||checker(companyForm, 'companyAddressUa')? 'error': ''">ADDRESS</span>
+                </ng-template>
+                <label class="tabContent">English:
+                    <input name="companyAddressEn" [(ngModel)]="company.address.en" placeholder="Tour de Lviv" [ngClass]="checker(companyForm, 'companyAddressEn')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyAddressEn', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Russian:
+                    <input name="companyAddressRu" [(ngModel)]="company.address.ru" placeholder="Тур де Львов" [ngClass]="checker(companyForm, 'companyAddressRu')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyAddressRu', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Ukrainian:
+                    <input name="companyAddressUa" [(ngModel)]="company.address.ua" placeholder="Тур де Львів" [ngClass]="checker(companyForm, 'companyAddressUa')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'companyAddressUa', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'email')? 'error': ''">EMAIL</span>
+                </ng-template>
+                <label class="tabContent">
+                    <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" [(ngModel)]="company.email" placeholder="your@email.com" [ngClass]="checker(companyForm, 'email')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'email', 'pattern')">
+                        {{locale.langPack['ERR-EMAIL']}}
+                    </mat-error>
+                    <mat-error *ngIf="checker(companyForm, 'email', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'link')? 'error': ''">WEBSITE</span>
+                </ng-template>
+                <label class="tabContent">
+                    <input type="url" pattern="((http|ftp|https):\/{2}).*" name="link" [(ngModel)]="company.link" placeholder="http://" [ngClass]="checker(companyForm, 'link')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'link', 'pattern')">
+                        Invalid link
+                    </mat-error>
+                    <mat-error *ngIf="checker(companyForm, 'link', 'required')">
+                        Link is required
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'phoneMain')||checker(companyForm, 'phoneReception')||checker(companyForm, 'phoneRestaurant')||checker(companyForm, 'phoneBook')||checker(companyForm, 'phoneFax')? 'error': ''">PHONES</span>
+                </ng-template>
+                <label class="tabContent">Main:
+                    <input pattern="(\+380)+[0-9]{9}" name="phoneMain" [(ngModel)]="company.phones.main[0]" placeholder="+380" [ngClass]="checker(companyForm, 'phoneMain')? 'error oneLineInputSmall': 'oneLineInputSmall'" required/>
+                    <mat-error *ngIf="checker(companyForm, 'phoneMain', 'pattern')">
+                        {{locale.langPack['ERR-PHONE']}}
+                    </mat-error>
+                    <mat-error *ngIf="checker(companyForm, 'phoneMain', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Reception:
+                    <input pattern="(\+380)+[0-9]{9}" name="phoneReception" [(ngModel)]="company.phones.reception[0]" placeholder="+380" [ngClass]="checker(companyForm, 'phoneReception')? 'error oneLineInputSmall': 'oneLineInputSmall'"/>
+                    <mat-error *ngIf="checker(companyForm, 'phoneReception', 'pattern')">
+                        {{locale.langPack['ERR-PHONE']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Restaurant:
+                    <input pattern="(\+380)+[0-9]{9}" name="phoneRestaurant" [(ngModel)]="company.phones.restaurant[0]" placeholder="+380" [ngClass]="checker(companyForm, 'phoneRestaurant')? 'error oneLineInputSmall': 'oneLineInputSmall'"/>
+                    <mat-error *ngIf="checker(companyForm, 'phoneRestaurant', 'pattern')">
+                        {{locale.langPack['ERR-PHONE']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Booking:
+                    <input pattern="(\+380)+[0-9]{9}" name="phoneBook" [(ngModel)]="company.phones.book[0]" placeholder="+380" [ngClass]="checker(companyForm, 'phoneBook')? 'error oneLineInputSmall': 'oneLineInputSmall'"/>
+                    <mat-error *ngIf="checker(companyForm, 'phoneBook', 'pattern')">
+                        {{locale.langPack['ERR-PHONE']}}
+                    </mat-error>
+                </label>
+                <label class="tabContent">Fax:
+                    <input pattern="(\+380)+[0-9]{9}" name="phoneFax" [(ngModel)]="company.phones.fax[0]" placeholder="+380" [ngClass]="checker(companyForm, 'phoneFax')? 'error oneLineInputSmall': 'oneLineInputSmall'"/>
+                    <mat-error *ngIf="checker(companyForm, 'phoneFax', 'pattern')">
+                        {{locale.langPack['ERR-PHONE']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checkAllImagesUploaded()? '': 'error'">IMAGE</span>
+                </ng-template>
+                <div class="tabContent imageForm">
+                    <div class="uploaderImage">
+                        <div class="control">
+                            {{logo.name}}
+                            <img-cropper [image]="logo" [settings]="logo.settings" ></img-cropper>
+                            <mat-error *ngIf="!checkAllImagesUploaded()">
+                                {{locale.langPack['ERR-REQUIRED']}}
+                            </mat-error>
+                        </div>
+                        <img *ngIf="logo.image || logo.link" [src]="logo.image || logo.link" [width]="logo.settings.width" [height]="logo.settings.height">
+                    </div>
+                    <div *ngFor="let type of banners; let i = index" class="uploaderImage">
+                        <div class="control">
+                            {{type.name}}
+                            <img-cropper [image]="banners[i]" [settings]="type.settings" ></img-cropper>
+                            <mat-error *ngIf="!checkAllImagesUploaded()">
+                                {{locale.langPack['ERR-REQUIRED']}}
+                            </mat-error>
+                        </div>
+                        <img *ngIf="banners[i].image || banners[i].link" [src]="banners[i].image || banners[i].link" [width]="type.settings.width" [height]="type.settings.height">
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <span [ngClass]="checker(companyForm, 'category')? 'error': ''">CATEGORY</span>
+                </ng-template>
+                <label class="tabContent">
+                    <select *ngIf="categories.length" name="category" [(ngModel)]="company.category" required multiple>
+                        <option *ngFor="let category of categories" [value]="category.name">{{locale.langPack[category.name]}}</option>
+                    </select>
+                    <mat-error *ngIf="checker(companyForm, 'category', 'required')">
+                        {{locale.langPack['ERR-REQUIRED']}}
+                    </mat-error>
+                </label>
+            </mat-tab>
+        </mat-tab-group>
+        <button class="button success-button">{{locale.langPack['SAVE-COMPANY']}}</button>
+    </form>
+</section>

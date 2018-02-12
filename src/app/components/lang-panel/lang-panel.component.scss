@@ -1,0 +1,25 @@
+@import '../../../globalStyles/variables.scss';
+
+#langPanel {
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
+    background-color: $color-main;
+    box-shadow: -2px 2px 10px $color-dark;
+    opacity: 0.7;
+    transition: 0.5s;
+    &:hover {
+        opacity: 1;
+    }
+
+    span {
+        margin: 2.5px;
+        cursor: pointer;
+        &:hover {
+            font-weight: bold;
+        }
+    }
+    .currentLang {
+        color: white;
+        text-shadow: 0 0 2px $color-dark;
+    }
+}

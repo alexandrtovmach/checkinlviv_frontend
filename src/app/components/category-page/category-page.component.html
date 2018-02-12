@@ -1,0 +1,34 @@
+<aside>
+    <div class="bannerWrap">
+        <a *ngFor="let banner of banners" [href]="banner.link" [title]="banner.name">
+            <img [src]="banner.img" [alt]="banner.name">
+        </a>
+    </div>
+</aside>
+<aside>
+    <div class="bannerWrap">
+        <a *ngFor="let banner of bannersReverse" [href]="banner.link" [title]="banner.name">
+            <img [src]="banner.img" [alt]="banner.name">
+        </a>
+    </div>
+</aside>
+
+<section>
+    <h1 class="h1">{{locale.langPack[categoryName]}}
+        <label class="plain-light">
+            {{locale.langPack['ONLYWITHDISCOUNT']}}:
+            <input type="checkbox" (click)="search($event.target.checked)" class="checkbox">
+        </label>
+    </h1>
+    <a *ngFor="let company of resultCompanies" [routerLink]="'../../company/' + company._id" target="_blank" title={{company.name[locale.currentLang]}} class="{{company.isMarkedCheckInLviv? 'discountBg': ''}} resultCompany accent-regular verticalAlign">
+        <a [href]="company.link" target="_blank" class="logo" style.backgroundImage="{{'url(' + company.logo + ')'}}" title="{{locale.langPack['TOWEBDESC']}}">
+            <div *ngIf="company.link" class="link plain-light centerContent">{{locale.langPack['TOWEB']}}</div>
+        </a>
+        <div class="info">
+            <div class="title h2">{{company.name[locale.currentLang]}}</div>
+            <p class="description plain-light">{{company.description[locale.currentLang]}}</p>
+        </div>
+        <div *ngIf="company.isMarkedCheckInLviv" class="markCheckInLviv"></div>
+    </a>
+</section>
+

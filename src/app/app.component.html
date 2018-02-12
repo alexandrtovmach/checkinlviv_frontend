@@ -1,0 +1,6 @@
+<app-header-view *ngIf="locale.langPack" class="header" [lang]="locale.currentLang"></app-header-view>
+<div class="header hiddenHeader"></div>
+<app-lang-panel *ngIf="locale.langPack" lang="locale.currentLang"></app-lang-panel>
+<main *ngIf="locale.langPack" class="withHead" lang="locale.currentLang">
+    <router-outlet></router-outlet>
+</main>
